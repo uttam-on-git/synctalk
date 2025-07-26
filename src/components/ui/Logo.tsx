@@ -1,0 +1,98 @@
+const Logo = () => {
+  return (
+    <div className="flex items-center gap-3">
+      <svg
+        width="320"
+        height="50"
+        viewBox="0 0 320 50"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <linearGradient
+            id="primaryGradient"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="100%"
+          >
+            <stop offset="0%" style={{ stopColor: '#4f46e5' }} />
+            <stop offset="100%" style={{ stopColor: '#7c3aed' }} />
+          </linearGradient>
+
+          <linearGradient
+            id="accentGradient"
+            x1="0%"
+            y1="0%"
+            x2="100%"
+            y2="100%"
+          >
+            <stop offset="0%" style={{ stopColor: '#06b6d4' }} />
+            <stop offset="100%" style={{ stopColor: '#3b82f6' }} />
+          </linearGradient>
+
+          <filter id="textShadow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="1" />
+            <feOffset dx="1" dy="1" result="offset" />
+            <feComponentTransfer>
+              <feFuncA type="linear" slope="0.15" />
+            </feComponentTransfer>
+            <feMerge>
+              <feMergeNode />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+
+        <g font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+          <text
+            x="20"
+            y="28"
+            font-size="24"
+            font-weight="700"
+            fill="#1f2937"
+            letter-spacing="-0.5px"
+            filter="url(#textShadow)"
+          >
+            Sync
+          </text>
+
+          <text
+            x="20"
+            y="50"
+            font-size="24"
+            font-weight="700"
+            fill="url(#accentGradient)"
+            letter-spacing="-0.5px"
+            filter="url(#textShadow)"
+          >
+            Talk
+          </text>
+        </g>
+
+        <rect
+          x="185"
+          y="36"
+          width="12"
+          height="3"
+          rx="1.5"
+          fill="#e5e7eb"
+          opacity="0.7"
+        />
+
+        <text
+          x="88"
+          y="37"
+          font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+          font-size="12"
+          font-weight="500"
+          fill="#6b7280"
+          letter-spacing="1px"
+        >
+          SYNCHRONIZED COMMUNICATION
+        </text>
+      </svg>
+    </div>
+  );
+};
+
+export default Logo;
