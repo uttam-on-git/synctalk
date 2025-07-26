@@ -15,24 +15,24 @@ function App() {
   return (
     <>
       <AuthProvider>
-      <Toaster
-        position="top-center"
-        toastOptions={{
-          style: {
-            background: '#333',
-            color: '#fff',
-          },
-        }}
-      />
-      <Logo />
-      <Router>
-        <Routes>
-          <Route path="/" element={<Navigate to="/register" />} />
-          <Route path="/register" element={<RegistrationPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/chat" element={<ChatPage />} />
-        </Routes>
-      </Router>
+        <Toaster
+          position="top-center"
+          toastOptions={{
+            style: {
+              background: '#333',
+              color: '#fff',
+            },
+          }}
+        />
+        <Logo />
+        <Router>
+          <Routes>
+            <Route path="/" element={<Navigate to="/register" />} />
+            <Route path="/register" element={<RegistrationPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/chat" element={<ChatPage />} />
+          </Routes>
+        </Router>
       </AuthProvider>
     </>
   );
