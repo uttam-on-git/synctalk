@@ -80,7 +80,7 @@ const Logo = () => {
         />
 
         <text
-          x="88"
+          x="74"
           y="37"
           font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
           font-size="12"

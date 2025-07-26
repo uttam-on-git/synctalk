@@ -8,10 +8,13 @@ import {
 import RegistrationPage from './pages/RegistrationPage';
 import Logo from './components/ui/Logo';
 import LoginPage from './pages/LoginPage';
+import { AuthProvider } from './context/AuthContext';
+import ChatPage from './pages/ChatPage';
 
 function App() {
   return (
     <>
+      <AuthProvider>
       <Toaster
         position="top-center"
         toastOptions={{
@@ -27,8 +30,10 @@ function App() {
           <Route path="/" element={<Navigate to="/register" />} />
           <Route path="/register" element={<RegistrationPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/chat" element={<ChatPage />} />
         </Routes>
       </Router>
+      </AuthProvider>
     </>
   );
 }
