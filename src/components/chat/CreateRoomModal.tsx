@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import Input from '../ui/Input';
-import Button from '../ui/Button';
 import toast from 'react-hot-toast';
 
 interface CreateRoomModalProps {
@@ -63,7 +61,7 @@ const CreateRoomModal = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
       <div className="w-full max-w-md transform rounded-2xl bg-zinc-800 border border-zinc-700 p-6 shadow-2xl transition-all">
         <div className="mb-6 text-center">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-cyan-600">
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-cyan-600">
             <svg
               className="h-8 w-8 text-white"
               fill="none"
@@ -92,13 +90,13 @@ const CreateRoomModal = ({
             >
               Room Name *
             </label>
-            <Input
+            <input
               id="room-name"
               type="text"
               placeholder="Enter room name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full rounded-lg border-zinc-600 bg-zinc-700 px-4 py-3 text-white placeholder-zinc-400 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20"
+              className="w-full rounded-lg border border-zinc-600 bg-zinc-700 px-4 py-3 text-white placeholder-zinc-400 focus:border-cyan-500 focus:outline-none"
               disabled={isLoading}
               maxLength={50}
             />
@@ -120,7 +118,7 @@ const CreateRoomModal = ({
               placeholder="What's this room about?"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="w-full rounded-lg border border-zinc-600 bg-zinc-700 px-4 py-3 text-white placeholder-zinc-400 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20 resize-none"
+              className="w-full rounded-lg border border-zinc-600 bg-zinc-700 px-4 py-3 text-white placeholder-zinc-400 focus:border-cyan-500 focus:outline-none"
               disabled={isLoading}
               rows={3}
               maxLength={200}
@@ -132,18 +130,18 @@ const CreateRoomModal = ({
           </div>
 
           <div className="flex gap-3 pt-4">
-            <Button
+            <button
               type="button"
               onClick={handleClose}
               disabled={isLoading}
               className="flex-1 rounded-lg border border-zinc-600 bg-transparent px-4 py-3 font-semibold text-zinc-300 transition hover:bg-zinc-700 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
             >
               Cancel
-            </Button>
-            <Button
+            </button>
+            <button
               type="submit"
               disabled={isLoading || !name.trim()}
-              className="flex-1 rounded-lg bg-gradient-to-r from-violet-600 to-cyan-600 px-4 py-3 font-semibold text-white transition hover:from-violet-700 hover:to-cyan-700 disabled:cursor-not-allowed disabled:opacity-50"
+              className="flex-1 rounded-lg bg-cyan-600 px-4 py-3 font-semibold text-white transition hover-cyan-700 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {isLoading ? (
                 <div className="flex items-center justify-center space-x-2">
@@ -153,7 +151,7 @@ const CreateRoomModal = ({
               ) : (
                 'Create Room'
               )}
-            </Button>
+            </button>
           </div>
         </form>
 

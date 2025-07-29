@@ -401,7 +401,7 @@ const ChatPage = () => {
               </footer>
             </>
           ) : (
-            <div className="flex items-center justify-center p-8">
+            <div className="flex items-center justify-center p-8 lg:p-15">
               <div className="text-center">
                 <button
                   onClick={() => setIsSidebarOpen(true)}
