@@ -49,7 +49,7 @@ const Logo = () => {
             y="28"
             font-size="24"
             font-weight="700"
-            fill="#1f2937"
+            fill="#FFFFFF"
             letter-spacing="-0.5px"
             filter="url(#textShadow)"
           >
@@ -69,23 +69,13 @@ const Logo = () => {
           </text>
         </g>
 
-        <rect
-          x="185"
-          y="36"
-          width="12"
-          height="3"
-          rx="1.5"
-          fill="#e5e7eb"
-          opacity="0.7"
-        />
-
         <text
           x="74"
           y="37"
           font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
           font-size="12"
           font-weight="500"
-          fill="#6b7280"
+          fill="#FFFFFF"
           letter-spacing="1px"
         >
           SYNCHRONIZED COMMUNICATION

@@ -3,6 +3,7 @@ import Input from '../components/ui/Input';
 import Button from '../components/ui/Button';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
+import Logo from '../components/ui/Logo';
 
 const RegistrationPage = () => {
   const [username, setUsername] = useState('');
@@ -51,43 +52,46 @@ const RegistrationPage = () => {
   };
 
   return (
-    <div className="flex h-screen flex-col items-center justify-center p-4">
-      <div className="w-full max-w-md border rounded-lg p-8 shadow-lg">
-        <h1 className="mb-6 text-center text-3xl font-bold text-neutral-700">
-          Create an Account
-        </h1>
-        <form onSubmit={handleSubmit}>
-          <Input
-            type="text"
-            placeholder="Username"
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-          <Input
-            type="password"
-            placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <Input
-            type="email"
-            placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <Button type="submit" disabled={isLoading}>
-            {isLoading ? 'Creating Account...' : 'Create Account'}
-          </Button>
-        </form>
-        <p className="mt-6 text-center text-sm text-zinc-400">
-          Already have an account?{' '}
-          <Link
-            to="/login"
-            className="font-semibold text-cyan-500 hover:underline"
-          >
-            Log In
-          </Link>
-        </p>
+    <div className="flex flex-col h-screen">
+      <Logo />
+      <div className="flex h-screen flex-col items-center justify-center p-4">
+        <div className="w-full max-w-md border rounded-lg p-8">
+          <h1 className="mb-6 text-center text-2xl font-semibold text-gray-600">
+            Create an Account
+          </h1>
+          <form onSubmit={handleSubmit}>
+            <Input
+              type="text"
+              placeholder="Username"
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+            <Input
+              type="password"
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <Input
+              type="email"
+              placeholder="Email"
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <Button type="submit" disabled={isLoading}>
+              {isLoading ? 'Creating Account...' : 'Create Account'}
+            </Button>
+          </form>
+          <p className="mt-6 text-center text-sm text-zinc-400">
+            Already have an account?{' '}
+            <Link
+              to="/login"
+              className="font-semibold text-cyan-500 hover:underline"
+            >
+              Log In
+            </Link>
+          </p>
+        </div>
       </div>
     </div>
   );

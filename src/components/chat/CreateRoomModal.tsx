@@ -20,15 +20,26 @@ const CreateRoomModal = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!name.trim()) {
+      toast.error('Room name is required');
+      return;
+    }
+
     setIsLoading(true);
 
-    const createPromise = onCreate(name, description);
+    const createPromise = onCreate(
+      name.trim(),
+      description.trim() || undefined,
+    );
 
     toast.promise(createPromise, {
       loading: 'Creating room...',
       success: () => {
         setIsLoading(false);
-        onClose(); // Close the modal on success
+        setName('');
+        setDescription('');
+        onClose();
         return 'Room created successfully!';
       },
       error: (err) => {
@@ -38,37 +49,133 @@ const CreateRoomModal = ({
     });
   };
 
+  const handleClose = () => {
+    if (!isLoading) {
+      setName('');
+      setDescription('');
+      onClose();
+    }
+  };
+
   if (!isOpen) return null;
 
   return (
-    <div>
-      <div>
-        <h2>Create a New Room</h2>
-        <form onSubmit={handleSubmit}>
-          <Input
-            placeholder="Room Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
+      <div className="w-full max-w-md transform rounded-2xl bg-zinc-800 border border-zinc-700 p-6 shadow-2xl transition-all">
+        <div className="mb-6 text-center">
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-violet-600 to-cyan-600">
+            <svg
+              className="h-8 w-8 text-white"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+              />
+            </svg>
+          </div>
+          <h2 className="text-2xl font-bold text-white">Create New Room</h2>
+          <p className="text-sm text-zinc-400">
+            Start a new conversation space
+          </p>
+        </div>
 
-          <Input
-            placeholder="Description (optional)"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-          <div className="mt-4 flex gap-2">
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label
+              htmlFor="room-name"
+              className="block text-sm font-medium text-zinc-300 mb-2"
+            >
+              Room Name *
+            </label>
+            <Input
+              id="room-name"
+              type="text"
+              placeholder="Enter room name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full rounded-lg border-zinc-600 bg-zinc-700 px-4 py-3 text-white placeholder-zinc-400 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20"
+              disabled={isLoading}
+              maxLength={50}
+            />
+            <div className="mt-1 flex justify-between text-xs text-zinc-500">
+              <span>Give your room a memorable name</span>
+              <span>{name.length}/50</span>
+            </div>
+          </div>
+
+          <div>
+            <label
+              htmlFor="room-description"
+              className="block text-sm font-medium text-zinc-300 mb-2"
+            >
+              Description <span className="text-zinc-500">(optional)</span>
+            </label>
+            <textarea
+              id="room-description"
+              placeholder="What's this room about?"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              className="w-full rounded-lg border border-zinc-600 bg-zinc-700 px-4 py-3 text-white placeholder-zinc-400 focus:border-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-500/20 resize-none"
+              disabled={isLoading}
+              rows={3}
+              maxLength={200}
+            />
+            <div className="mt-1 flex justify-between text-xs text-zinc-500">
+              <span>Help others understand the room's purpose</span>
+              <span>{description.length}/200</span>
+            </div>
+          </div>
+
+          <div className="flex gap-3 pt-4">
             <Button
               type="button"
-              onClick={onClose}
-              className="bg-zinc-600 hover:bg-zinc-500"
+              onClick={handleClose}
+              disabled={isLoading}
+              className="flex-1 rounded-lg border border-zinc-600 bg-transparent px-4 py-3 font-semibold text-zinc-300 transition hover:bg-zinc-700 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
             >
               Cancel
             </Button>
-            <Button type="submit" disabled={isLoading}>
-              {isLoading ? 'Creating...' : 'Create'}
+            <Button
+              type="submit"
+              disabled={isLoading || !name.trim()}
+              className="flex-1 rounded-lg bg-gradient-to-r from-violet-600 to-cyan-600 px-4 py-3 font-semibold text-white transition hover:from-violet-700 hover:to-cyan-700 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {isLoading ? (
+                <div className="flex items-center justify-center space-x-2">
+                  <div className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white"></div>
+                  <span>Creating...</span>
+                </div>
+              ) : (
+                'Create Room'
+              )}
             </Button>
           </div>
         </form>
+
+        <button
+          onClick={handleClose}
+          disabled={isLoading}
+          className="absolute right-4 top-4 rounded-full p-2 text-zinc-400 hover:bg-zinc-700 hover:text-white disabled:cursor-not-allowed sm:hidden"
+        >
+          <svg
+            className="h-5 w-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
       </div>
     </div>
   );

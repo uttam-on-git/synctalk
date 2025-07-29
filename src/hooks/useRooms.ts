@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import type { Socket } from 'socket.io-client';
 
 export interface Room {
   id: string;
@@ -7,7 +8,7 @@ export interface Room {
   description: string | null;
 }
 
-export const useRooms = () => {
+export const useRooms = (socket: Socket | null) => {
   const [rooms, setRooms] = useState<Room[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -58,13 +59,27 @@ export const useRooms = () => {
       const data = await response.json();
       throw new Error(data.message || 'Failed to create room.');
     }
-
-    // after creating a new room, refetch the list to update the UI
-    fetchRooms();
   };
 
   useEffect(() => {
     fetchRooms();
   }, [fetchRooms]);
-  return { rooms, isLoading, createRoom, refetchRooms: fetchRooms };
+
+  useEffect(() => {
+    if (!socket) return;
+
+    // listen for the 'newRoom' event
+    socket.on('newRoom', (newRoom: Room) => {
+      // Add the new room to our state in real-time
+      setRooms((prevRooms) => [...prevRooms, newRoom]);
+      toast.success(`New room created: #${newRoom.name}`);
+    });
+
+    // clean up the event listener when the component unmounts
+    return () => {
+      socket.off('newRoom');
+    };
+  }, [socket]);
+
+  return { rooms, isLoading, createRoom };
 };

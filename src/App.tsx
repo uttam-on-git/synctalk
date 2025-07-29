@@ -6,7 +6,6 @@ import {
   Navigate,
 } from 'react-router-dom';
 import RegistrationPage from './pages/RegistrationPage';
-import Logo from './components/ui/Logo';
 import LoginPage from './pages/LoginPage';
 import { AuthProvider } from './context/AuthContext';
 import ChatPage from './pages/ChatPage';
@@ -24,7 +23,6 @@ function App() {
             },
           }}
         />
-        <Logo />
         <Router>
           <Routes>
             <Route path="/" element={<Navigate to="/register" />} />

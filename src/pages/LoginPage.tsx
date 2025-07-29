@@ -44,40 +44,42 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex h-screen flex-col items-center justify-center p-4">
-      <div className="w-full max-w-md border rounded-lg p-8 shadow-lg">
-        <div className="mb-6 flex justify-center">
-          <Logo />
+    <div className="flex flex-col h-screen">
+      <div className="flex-shrink-0">
+        <Logo />
+      </div>
+      <div className="flex-1 overflow-y-auto flex items-center justify-center p-4">
+        <div className="w-full max-w-md border rounded-lg p-8 shadow-lg">
+          <h1 className="mb-6 text-center text-2xl font-semibold text-gray-600">
+            Welcome Back!
+          </h1>
+          <form onSubmit={handleSubmit}>
+            <Input
+              type="email"
+              placeholder="Email"
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <Input
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              required
+            />
+            <Button type="submit" disabled={isLoading}>
+              {isLoading ? 'Logging In...' : 'Log In'}
+            </Button>
+          </form>
+          <p className="mt-6 text-center text-sm text-zinc-400">
+            Don't have an account?{' '}
+            <Link
+              to="/register"
+              className="font-semibold text-cyan-500 hover:underline"
+            >
+              Sign Up
+            </Link>
+          </p>
         </div>
-        <h1 className="mb-6 text-center text-3xl font-bold text-neutral-700">
-          Welcome Back!
-        </h1>
-        <form onSubmit={handleSubmit}>
-          <Input
-            type="email"
-            placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <Input
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-            required
-          />
-          <Button type="submit" disabled={isLoading}>
-            {isLoading ? 'Logging In...' : 'Log In'}
-          </Button>
-        </form>
-        <p className="mt-6 text-center text-sm text-zinc-400">
-          Don't have an account?{' '}
-          <Link
-            to="/register"
-            className="font-semibold text-cyan-500 hover:underline"
-          >
-            Sign Up
-          </Link>
-        </p>
       </div>
     </div>
   );
