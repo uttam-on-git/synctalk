@@ -134,14 +134,14 @@ const CreateRoomModal = ({
               type="button"
               onClick={handleClose}
               disabled={isLoading}
-              className="flex-1 rounded-lg border border-zinc-600 bg-transparent px-4 py-3 font-semibold text-zinc-300 transition hover:bg-zinc-700 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
+              className="flex-1 rounded-lg border cursor-pointer border-zinc-600 bg-transparent px-4 py-3 font-semibold text-zinc-300 transition hover:bg-zinc-700 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isLoading || !name.trim()}
-              className="flex-1 rounded-lg bg-cyan-600 px-4 py-3 font-semibold text-white transition hover-cyan-700 disabled:cursor-not-allowed disabled:opacity-50"
+              className="flex-1 rounded-lg bg-cyan-600 px-4 py-3 font-semibold cursor-pointer text-white transition hover-cyan-700 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {isLoading ? (
                 <div className="flex items-center justify-center space-x-2">
@@ -158,7 +158,7 @@ const CreateRoomModal = ({
         <button
           onClick={handleClose}
           disabled={isLoading}
-          className="absolute right-4 top-4 rounded-full p-2 text-zinc-400 hover:bg-zinc-700 hover:text-white disabled:cursor-not-allowed sm:hidden"
+          className="absolute right-4 top-4 cursor-pointer rounded-full p-2 text-zinc-400 hover:bg-zinc-700 hover:text-white disabled:cursor-not-allowed sm:hidden"
         >
           <svg
             className="h-5 w-5"

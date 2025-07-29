@@ -120,7 +120,7 @@ const ChatPage = () => {
               <h2 className="text-xl font-bold">Rooms</h2>
               <button
                 onClick={() => setIsSidebarOpen(false)}
-                className="rounded-md p-2 hover:bg-zinc-700 lg:hidden"
+                className="rounded-md p-2 cursor-pointer hover:bg-zinc-700 lg:hidden"
               >
                 <svg
                   className="h-6 w-6"
@@ -167,7 +167,7 @@ const ChatPage = () => {
                     <button
                       key={room.id}
                       onClick={() => handleRoomSelect(room.id)}
-                      className={`group w-full rounded-lg p-3 text-left transition-all duration-200 ${
+                      className={`group w-full cursor-pointer rounded-lg p-3 text-left transition-all duration-200 ${
                         selectedRoom?.id === room.id
                           ? 'bg-cyan-600 text-white shadow-lg'
                           : 'text-zinc-300 hover:bg-zinc-700 hover:text-white'
@@ -214,7 +214,7 @@ const ChatPage = () => {
             <div className="flex-shrink-0 border-t border-zinc-700 p-4">
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="group w-full rounded-lg border-1 border-dashed border-zinc-600 p-3 text-zinc-400 transition-all duration-200 hover:border-cyan-500 hover:bg-violet-500/10 hover:text-white"
+                className="group w-full rounded-lg border-1 cursor-pointer border-dashed border-zinc-600 p-3 text-zinc-400 transition-all duration-200 hover:border-cyan-500 hover:bg-violet-500/10 hover:text-white"
               >
                 <div className="flex items-center justify-center space-x-2">
                   <svg
@@ -244,7 +244,7 @@ const ChatPage = () => {
                 <div className="flex items-center space-x-3">
                   <button
                     onClick={() => setIsSidebarOpen(true)}
-                    className="rounded-md p-2 hover:bg-zinc-700 lg:hidden"
+                    className="rounded-md p-2 cursor-pointer hover:bg-zinc-700 lg:hidden"
                   >
                     <svg
                       className="h-6 w-6"
@@ -272,7 +272,7 @@ const ChatPage = () => {
                   </div>
                 </div>
 
-                <button className="rounded-md p-2 hover:bg-zinc-700 sm:hidden">
+                <button className="rounded-md p-2 cursor-pointer hover:bg-zinc-700 sm:hidden">
                   <svg
                     className="h-6 w-6"
                     fill="none"
@@ -379,7 +379,7 @@ const ChatPage = () => {
                     <button
                       type="submit"
                       disabled={!newMessage.trim()}
-                      className="rounded-xl bg-cyan-600 px-4 py-3 font-semibold text-white transition hover:bg-cyan-700 disabled:cursor-not-allowed disabled:opacity-50 sm:px-6"
+                      className="rounded-xl bg-cyan-600 px-4 cursor-pointer py-3 font-semibold text-white transition hover:bg-cyan-700 disabled:cursor-not-allowed disabled:opacity-50 sm:px-6"
                     >
                       <span className="hidden sm:inline">Send</span>
                       <svg
@@ -405,7 +405,7 @@ const ChatPage = () => {
               <div className="text-center">
                 <button
                   onClick={() => setIsSidebarOpen(true)}
-                  className="mb-6 rounded-md flex justify-start p-2 hover:bg-zinc-700 lg:hidden md:justify-center"
+                  className="mb-6 rounded-md flex cursor-pointer justify-start p-2 hover:bg-zinc-700 lg:hidden md:justify-center"
                 >
                   <svg
                     className="h-8 w-8"
