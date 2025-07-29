@@ -48,9 +48,17 @@ const ChatPage = () => {
     if (!socket) return;
     
     const handleNewMessage = (message: Message) => {
-      if (message.roomId === selectedRoom?.id) {
-        setMessages((prevMessages) => [...prevMessages, message]);
-      }
+      setMessages((prevMessages) => {
+        // Check if message already exists to avoid duplicates
+        if (prevMessages.find(msg => msg.id === message.id)) {
+          return prevMessages;
+        }
+        // Only add message if it belongs to the current room
+        if (message.roomId === selectedRoom?.id) {
+          return [...prevMessages, message];
+        }
+        return prevMessages;
+      });
     };
 
     socket.on('newMessage', handleNewMessage);
