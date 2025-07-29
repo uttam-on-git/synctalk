@@ -43,14 +43,14 @@ const Logo = () => {
           </filter>
         </defs>
 
-        <g font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+        <g fontFamily="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
           <text
             x="20"
             y="28"
-            font-size="24"
-            font-weight="700"
+            fontSize="24"
+            fontWeight="700"
             fill="#FFFFFF"
-            letter-spacing="-0.5px"
+            letterSpacing="-0.5px"
             filter="url(#textShadow)"
           >
             Sync
@@ -59,10 +59,10 @@ const Logo = () => {
           <text
             x="20"
             y="50"
-            font-size="24"
-            font-weight="700"
+            fontSize="24"
+            fontWeight="700"
             fill="url(#accentGradient)"
-            letter-spacing="-0.5px"
+            letterSpacing="-0.5px"
             filter="url(#textShadow)"
           >
             Talk
@@ -72,11 +72,11 @@ const Logo = () => {
         <text
           x="74"
           y="37"
-          font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
-          font-size="12"
-          font-weight="500"
+          fontFamily="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+          fontSize="12"
+          fontWeight="500"
           fill="#FFFFFF"
-          letter-spacing="1px"
+          letterSpacing="1px"
         >
           SYNCHRONIZED COMMUNICATION
         </text>
