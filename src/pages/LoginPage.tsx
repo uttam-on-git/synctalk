@@ -44,13 +44,16 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col bg-zinc-900 text-white h-screen">
       <div className="flex-shrink-0">
         <Logo />
       </div>
       <div className="flex-1 overflow-y-auto flex items-center justify-center p-4">
-        <div className="w-full max-w-md border rounded-lg p-8 shadow-lg">
-          <h1 className="mb-6 text-center text-2xl font-semibold text-gray-600">
+        <div className="w-full max-w-md transform rounded-2xl border bg-zinc-800 border-zinc-700 p-8 shadow">
+          <div className='flex justify-center items-center pb-5'>
+            <Logo/>
+          </div>
+          <h1 className="mb-6 text-center text-2xl font-semibold">
             Welcome Back!
           </h1>
           <form onSubmit={handleSubmit}>

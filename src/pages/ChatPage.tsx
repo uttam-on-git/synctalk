@@ -46,11 +46,11 @@ const ChatPage = () => {
 
   useEffect(() => {
     if (!socket) return;
-    
+
     const handleNewMessage = (message: Message) => {
       setMessages((prevMessages) => {
         // Check if message already exists to avoid duplicates
-        if (prevMessages.find(msg => msg.id === message.id)) {
+        if (prevMessages.find((msg) => msg.id === message.id)) {
           return prevMessages;
         }
         // Only add message if it belongs to the current room
@@ -100,7 +100,7 @@ const ChatPage = () => {
 
   const handleRoomSelect = (roomId: string) => {
     setSelectedRoom(rooms.find((r) => r.id === roomId) || null);
-    setIsSidebarOpen(false); 
+    setIsSidebarOpen(false);
   };
 
   if (isAuthLoading || areRoomsLoading) {
@@ -131,7 +131,7 @@ const ChatPage = () => {
         `}
         >
           <div className="flex h-full flex-col">
-            <div className="flex-shrink-0 flex items-center justify-between border-b border-zinc-700 p-4 lg:justify-center">
+            <div className="flex-shrink-0 flex items-center justify-between border-b border-zinc-700 p-7 lg:justify-center">
               <h2 className="text-xl font-bold">Rooms</h2>
               <button
                 onClick={() => setIsSidebarOpen(false)}
@@ -153,7 +153,7 @@ const ChatPage = () => {
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-4">
+            <div className="flex-1 overflow-y-auto p-6">
               {rooms.length === 0 ? (
                 <div className="flex flex-col items-center justify-center py-8 text-center">
                   <div className="mb-4 rounded-full bg-zinc-700 p-4">
@@ -200,7 +200,7 @@ const ChatPage = () => {
                         </div>
 
                         <div className="min-w-0 flex-1">
-                          <h3 className="truncate font-semibold text-sm">
+                          <h3 className="truncate font-semibold  text-sm">
                             {room.name}
                           </h3>
                           {room.description && (
@@ -394,11 +394,11 @@ const ChatPage = () => {
                     <button
                       type="submit"
                       disabled={!newMessage.trim()}
-                      className="rounded-xl bg-cyan-600 px-4 cursor-pointer py-3 font-semibold text-white transition hover:bg-cyan-700 disabled:cursor-not-allowed disabled:opacity-50 sm:px-6"
+                      className="rounded-xl bg-cyan-500 px-4 cursor-pointer py-3 font-semibold text-white transition hover:bg-cyan-800 disabled:cursor-not-allowed disabled:opacity-50 sm:px-6"
                     >
                       <span className="hidden sm:inline">Send</span>
                       <svg
-                        className="h-5 w-5 sm:hidden"
+                        className="h-5 w-5 sm:hidden pointer-events-none"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"

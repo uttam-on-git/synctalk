@@ -52,11 +52,13 @@ const RegistrationPage = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen">
-      <Logo />
+    <div className="flex flex-col bg-zinc-900 text-white h-screen">
+      <div className="flex-shrink-0">
+        <Logo />
+      </div>
       <div className="flex h-screen flex-col items-center justify-center p-4">
-        <div className="w-full max-w-md border rounded-lg p-8">
-          <h1 className="mb-6 text-center text-2xl font-semibold text-gray-600">
+        <div className="w-full max-w-md bg-zinc-800 rounded-2xl border border-zinc-700 p-8">
+          <h1 className="mb-6 text-center text-2xl font-semibold">
             Create an Account
           </h1>
           <form onSubmit={handleSubmit}>
