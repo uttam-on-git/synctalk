@@ -46,12 +46,19 @@ const ChatPage = () => {
 
   useEffect(() => {
     if (!socket) return;
-    socket.on('newMessage', (message: Message) => {
+    
+    const handleNewMessage = (message: Message) => {
       if (message.roomId === selectedRoom?.id) {
         setMessages((prevMessages) => [...prevMessages, message]);
       }
-    });
-  }, [socket, selectedRoom, setMessages]);
+    };
+
+    socket.on('newMessage', handleNewMessage);
+
+    return () => {
+      socket.off('newMessage', handleNewMessage);
+    };
+  }, [socket, selectedRoom?.id, setMessages]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });

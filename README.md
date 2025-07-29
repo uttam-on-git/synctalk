@@ -1,69 +1,88 @@
-# React + TypeScript + Vite
+# SyncTalk - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
+![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=white)
 
-Currently, two official plugins are available:
+This repository contains the frontend client for **SyncTalk**, a full-stack, real-time chat application. This React application provides the user interface for signing up, logging in, creating and joining chat rooms, and sending messages instantly.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+-   **Modern UI:** Built with React, TypeScript, and styled with Tailwind CSS for a beautiful and responsive user experience.
+-   **Real-Time Messaging:** Connects to the backend via WebSockets (Socket.IO) to send and receive messages instantly without page reloads.
+-   **Multi-Room Interface:** Features a dynamic sidebar to list and select chat rooms, and a main panel to display the message history and compose new messages.
+-   **Secure Authentication Flow:** Handles user registration and login, securely storing JWTs in local storage to manage user sessions.
+-   **Modular & Scalable:** Architected with a focus on reusable UI components, custom hooks (`useAuth`, `useRooms`, `useMessages`), and a global `AuthContext` for clean state management.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 🛠️ Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+-   **Framework:** [React](https://reactjs.org/)
+-   **Language:** [TypeScript](https://www.typescriptlang.org/)
+-   **Build Tool:** [Vite](https://vitejs.dev/)
+-   **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+-   **Real-time Client:** [Socket.IO Client](https://socket.io/docs/v4/client-api/)
+-   **Routing:** [React Router](https://reactrouter.com/)
+-   **Notifications:** [React Hot Toast](https://react-hot-toast.com/)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+## 🚀 Getting Started
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
-```
+Follow these instructions to get a local copy of the frontend up and running.
+
+### Prerequisites
+
+-   [Node.js](https://nodejs.org/) (v18 or later)
+-   A running instance of the [SyncTalk Backend](https://github.com/your-username/synctalk-backend)
+
+### Installation & Setup
+
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/your-username/synctalk-frontend.git](https://github.com/your-username/synctalk-frontend.git)
+    cd synctalk-frontend
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Set up environment variables:**
+    -   In the root of the project, create a new file named `.env`.
+    -   Add the following variable, pointing to your local backend server:
+        ```env
+        VITE_BACKEND_API_URL="http://localhost:3001"
+        ```
+
+### Running the Application
+
+-   To start the development server with hot-reloading:
+    ```bash
+    npm run dev
+    ```
+-   The application will be available at `http://localhost:5173`.
+
+---
+
+## 📜 Available Scripts
+
+-   `npm run dev`: Runs the app in development mode.
+-   `npm run build`: Builds the app for production.
+-   `npm run lint`: Lints the code for errors.
+-   `npm run format`: Formats all files with Prettier.
+-   `npm run preview`: Serves the production build locally.
+
+---
+
+## 🔑 Environment Variables
+
+| Variable             | Description                                       | Example                 |
+| :------------------- | :------------------------------------------------ | :---------------------- |
+| `VITE_BACKEND_API_URL` | The URL of the backend API and WebSocket server.  | `http://localhost:3001` |
