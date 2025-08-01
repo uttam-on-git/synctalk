@@ -56,7 +56,7 @@ const HomePage = () => {
               src={productImage}
               alt="SyncTalk App"
               className="w-full max-w-lg mx-auto rounded-2xl shadow-2xl 
-             transition-transform duration-300 ease-in-out hover:scale-150"
+             transition-transform duration-300 ease-in-out lg:hover:scale-150"
             />
           </div>
         </div>
