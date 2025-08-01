@@ -1,9 +1,9 @@
-const Logo = () => {
+const MobileLogo = () => {
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex items-center">
       <svg
-        width="340"
-        height="60"
+        width="300"
+        height="45"
         viewBox="0 0 320 50"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -61,7 +61,7 @@ const Logo = () => {
             y="50"
             fontSize="24"
             fontWeight="700"
-            fill="#2697e9"
+            fill="url(#accentGradient)"
             letterSpacing="-0.5px"
             filter="url(#textShadow)"
           >
@@ -69,7 +69,7 @@ const Logo = () => {
           </text>
         </g>
 
-        <text
+        {/* <text
           x="74"
           y="37"
           fontFamily="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
@@ -79,10 +79,10 @@ const Logo = () => {
           letterSpacing="1px"
         >
           SYNCHRONIZED COMMUNICATION
-        </text>
+        </text> */}
       </svg>
     </div>
   );
 };
 
-export default Logo;
+export default MobileLogo;

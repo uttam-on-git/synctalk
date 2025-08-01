@@ -69,7 +69,7 @@ const ChatPage = () => {
   }, [socket, selectedRoom?.id, setMessages]);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    messagesEndRef.current?.scrollIntoView({ behavior: 'auto' });
   }, [messages]);
 
   //effect to join and leave room

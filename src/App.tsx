@@ -3,12 +3,12 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate,
 } from 'react-router-dom';
 import RegistrationPage from './pages/RegistrationPage';
 import LoginPage from './pages/LoginPage';
 import { AuthProvider } from './context/AuthContext';
 import ChatPage from './pages/ChatPage';
+import HomePage from './pages/HomePage';
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
         />
         <Router>
           <Routes>
-            <Route path="/" element={<Navigate to="/register" />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/register" element={<RegistrationPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/chat" element={<ChatPage />} />

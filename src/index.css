@@ -1,1 +1,108 @@
 @import 'tailwindcss';
+.home-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.main-content {
+  display: flex;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: 80vh;
+  gap: 3rem;
+}
+
+.text-section {
+  flex: 1;
+}
+
+.main-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.brand-name {
+  color: #ffd700;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+.get-started-btn {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  transition: transform 0.3s;
+}
+
+.get-started-btn:hover {
+  transform: translateY(-2px);
+  background: #ff5252;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  max-width: 400px;
+}
+
+.feature-item {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  transition: background 0.3s;
+}
+
+.feature-item.clickable {
+  cursor: pointer;
+}
+
+.feature-item:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.image-section {
+  flex: 1;
+  text-align: center;
+}
+
+.product-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .main-title {
+    font-size: 2rem;
+  }
+  
+  .features {
+    grid-template-columns: 1fr;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
