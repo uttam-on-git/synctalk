@@ -95,11 +95,11 @@
     text-align: center;
     padding: 1rem;
   }
-  
+
   .main-title {
     font-size: 2rem;
   }
-  
+
   .features {
     grid-template-columns: 1fr;
     max-width: 300px;

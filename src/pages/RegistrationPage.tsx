@@ -2,17 +2,17 @@ import { useState } from 'react';
 import Input from '../components/ui/Input';
 import Button from '../components/ui/Button';
 import toast from 'react-hot-toast';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Logo from '../components/ui/Logo';
+import { useAuth } from '../hooks/useAuth';
 
 const RegistrationPage = () => {
+  const { login } = useAuth();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   //state to manage the loading state of form
   const [isLoading, setIsLoading] = useState(false);
-
-  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,8 +38,8 @@ const RegistrationPage = () => {
         }
         throw new Error(data.message || 'Registration failed');
       }
-      toast.success('Registration successful. Please login');
-      navigate('/login');
+      toast.success('Welcome to SyncTalk!');
+      login(data.token);
     } catch (error) {
       if (error instanceof Error) {
         toast.error(`Error: ${error.message}`);

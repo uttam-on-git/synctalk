@@ -4,7 +4,7 @@ import productImage from '/product-image.png';
 
 const HomePage = () => {
   const navigate = useNavigate();
-  
+
   const handleGetStarted = () => {
     navigate('/register');
   };
@@ -12,15 +12,14 @@ const HomePage = () => {
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       <NavBar />
-      
+
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="flex flex-col lg:flex-row items-center gap-12">
-          
           <div className="flex-1 text-center lg:text-left">
             <h1 className="text-4xl lg:text-6xl font-bold mb-6">
               Welcome to <span className="text-[#2697e9]">SyncTalk</span>
             </h1>
-            
+
             <p className="text-xl text-gray-300 mb-8">
               Connect and chat with people in real-time
             </p>
@@ -39,7 +38,7 @@ const HomePage = () => {
               <div className="bg-white/20 p-4 rounded-lg text-center">
                 ⚡ Real-time sync
               </div>
-              <div 
+              <div
                 className="bg-white/20 hover:bg-white/30 p-4 rounded-lg text-center cursor-pointer transition-colors"
                 onClick={handleGetStarted}
               >
