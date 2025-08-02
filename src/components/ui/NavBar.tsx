@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { HiOutlineMenu } from 'react-icons/hi';
+import { RxCross2 } from "react-icons/rx";
 import MobileLogo from './MobileLogo';
 import Logo from './Logo';
 import { useAuth } from '../../hooks/useAuth';
@@ -31,7 +32,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      <button onClick={() => setIsOpen(true)} className="sm:hidden text-white">
+      <button onClick={() => setIsOpen(true)} className="sm:hidden cursor-pointer text-white">
         <HiOutlineMenu size={25} />
       </button>
 
@@ -80,35 +81,39 @@ export default function Navbar() {
           className="absolute top-4 right-4 text-white"
         ></button>
 
-        <div className="flex flex-col gap-4 p-6 pt-16">
+        <div className="flex flex-col gap-4 p-5 pt-7">
           {user ? (
             <>
+              <div className='cursor-pointer flex items-center justify-end'>
+                <RxCross2 stroke='white' size={26} onClick={() => setIsOpen(false)}/>
+              </div>
               <button
                 onClick={handleGoToChat}
-                className="px-4 py-3 bg-violet-600 hover:bg-violet-700 text-white rounded-lg text-center transition-colors"
+                className="px-4 py-3 bg-cyan-500 hover:bg-cyan-700 text-white cursor-pointer rounded-lg text-center transition-colors"
               >
                 Go to Chat
               </button>
               <button
                 onClick={handleLogout}
-                className="px-4 py-3 bg-gray-600 hover:bg-gray-700 text-white rounded-lg text-center transition-colors"
+                className="px-4 py-3 bg-gray-600 hover:bg-gray-700 text-white rounded-lg cursor-pointer text-center transition-colors"
               >
                 Logout
               </button>
             </>
           ) : (
             <>
+              <RxCross2 stroke='white' />
               <Link
                 to="/register"
                 onClick={() => setIsOpen(false)}
-                className="px-4 py-3 bg-[#1f7cbf] hover:bg-[#6295ba] text-white rounded-lg text-center transition-colors"
+                className="px-4 py-3 bg-[#1f7cbf] hover:bg-[#6295ba] text-white cursor-pointer rounded-lg text-center transition-colors"
               >
                 Sign up
               </Link>
               <Link
                 to="/login"
                 onClick={() => setIsOpen(false)}
-                className="px-4 py-3 bg-[#1f7cbf] hover:bg-[#6295ba] text-white rounded-lg text-center transition-colors"
+                className="px-4 py-3 bg-[#1f7cbf] hover:bg-[#6295ba] text-white cursor-pointer rounded-lg text-center transition-colors"
               >
                 Log in
               </Link>
