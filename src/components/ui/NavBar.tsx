@@ -42,7 +42,7 @@ export default function Navbar() {
             <span className="text-gray-300">Welcome, {user.username}!</span>
             <button
               onClick={() => navigate('/chat')}
-              className="px-4 py-2 bg-violet-600 hover:bg-violet-700 text-white rounded-lg transition-colors"
+              className="px-4 py-2 bg-cyan-500 hover:bg-cyan-700 text-white rounded-lg transition-colors"
             >
               Go to Chat
             </button>
