@@ -39,14 +39,14 @@ Follow these instructions to get a local copy of the frontend up and running.
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/) (v18 or later)
-- A running instance of the [SyncTalk Backend](https://github.com/your-username/synctalk-backend)
+- A running instance of the [SyncTalk Backend](https://github.com/uttam-on-git/synctalk-backend)
 
 ### Installation & Setup
 
 1.  **Clone the repository:**
 
     ```bash
-    git clone [https://github.com/your-username/synctalk-frontend.git](https://github.com/your-username/synctalk-frontend.git)
+    git clone https://github.com/uttam-on-git/synctalk-frontend.git
     cd synctalk-frontend
     ```
 
