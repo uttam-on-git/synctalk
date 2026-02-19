@@ -104,7 +104,7 @@ const HomePage = () => {
         </nav>
       </header>
 
-      <main className="mx-auto mt-12 flex w-full max-w-6xl flex-col items-center px-4 text-center sm:px-6">
+      <main className="mx-auto mt-14 flex w-full max-w-6xl flex-col items-center px-4 text-center sm:px-6">
         <div className="inline-flex items-center gap-2 rounded-md border border-zinc-300 bg-white px-2 py-1 [animation:reveal-up_.45s_ease_both]">
           <span className="home-eyebrow rounded-sm bg-zinc-100 px-2 py-1 text-zinc-600">
             Realtime Chat Backend + UI
@@ -118,13 +118,13 @@ const HomePage = () => {
           </button>
         </div>
 
-        <h1 className="brand-title home-hero-title mt-7 max-w-3xl text-zinc-950 [animation:reveal-up_.5s_ease_.08s_both]">
+        <h1 className="brand-title home-hero-title mt-9 max-w-3xl text-zinc-950 [animation:reveal-up_.5s_ease_.08s_both]">
           Ship secure
           <br />
           roombased realtime chat.
         </h1>
 
-        <p className="home-subtitle mt-5 max-w-2xl [animation:reveal-up_.55s_ease_.16s_both]">
+        <p className="home-subtitle mt-6 max-w-2xl [animation:reveal-up_.55s_ease_.16s_both]">
           SyncTalk combines REST authentication and Socket.IO events so teams can
           create rooms, enforce membership, and collaborate with live updates.
         </p>
@@ -168,11 +168,11 @@ const HomePage = () => {
           ))}
         </div>
 
-        <section className="mt-20 w-full max-w-5xl [animation:reveal-up_.65s_ease_.4s_both]">
+        <section className="mt-28 w-full max-w-5xl [animation:reveal-up_.65s_ease_.4s_both]">
           <h2 className="brand-title home-section-title text-zinc-900">
             Built on a proven backend stack
           </h2>
-          <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
+          <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
             {trustLogos.map((logo) => (
               <div
                 key={logo}
@@ -186,11 +186,11 @@ const HomePage = () => {
 
         <section
           id="faq"
-          className="mt-20 w-full max-w-4xl rounded-2xl border border-zinc-300 bg-white p-6 text-left sm:p-8"
+          className="mt-28 w-full max-w-4xl rounded-2xl border border-zinc-300 bg-white p-6 text-left sm:p-8"
         >
           <div className="mb-6 text-center">
             <p className="home-eyebrow text-zinc-500">FAQ</p>
-            <h3 className="brand-title mt-2 text-4xl text-zinc-900">Everything you need to know</h3>
+            <h3 className="brand-title mt-3 text-4xl text-zinc-900">Everything you need to know</h3>
           </div>
           <div className="space-y-3">
             {faqItems.map((item, index) => {
@@ -220,10 +220,10 @@ const HomePage = () => {
           </div>
         </section>
 
-        <section className="mt-14 w-full max-w-4xl rounded-2xl border border-zinc-900 bg-zinc-900 px-6 py-9 text-center text-white sm:px-10">
+        <section className="home-cta-art mt-24 w-full max-w-4xl rounded-2xl border border-zinc-900 px-6 py-9 text-center text-white sm:px-10 sm:py-12 md:py-14">
           <p className="home-eyebrow text-zinc-300">Start now</p>
-          <h3 className="brand-title mt-2 text-4xl">Create an account and open your first room.</h3>
-          <p className="mx-auto mt-4 max-w-xl text-zinc-300">
+          <h3 className="brand-title mt-3 text-4xl">Create an account and open your first room.</h3>
+          <p className="mx-auto mt-5 max-w-xl text-zinc-300">
             Auth, authorization, room management, and realtime delivery are ready
             to use in your current SyncTalk app.
           </p>
@@ -236,7 +236,7 @@ const HomePage = () => {
         </section>
       </main>
 
-      <footer className="mx-auto mt-16 w-full max-w-6xl px-4 sm:px-6">
+      <footer className="mx-auto mt-24 w-full max-w-6xl px-4 sm:px-6">
         <div className="glass-panel rounded-xl p-6 sm:p-8">
           <div className="grid gap-8 border-b border-zinc-300 pb-8 md:grid-cols-4">
             <div className="md:col-span-2">
