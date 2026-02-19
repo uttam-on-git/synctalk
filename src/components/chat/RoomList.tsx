@@ -46,7 +46,7 @@ const RoomList = ({
                 onClick={() => onSelectRoom(room.id)}
                 className={`group w-full cursor-pointer rounded-lg p-3 text-left transition-all duration-200 ${
                   selectedRoomId === room.id
-                    ? 'bg-cyan-600 text-white shadow-lg'
+                    ? 'bg-blue-600 text-white shadow-lg'
                     : 'text-zinc-300 hover:bg-zinc-700 hover:text-white'
                 }`}
               >
@@ -101,7 +101,7 @@ const RoomList = ({
       <div className="border-t border-zinc-700 p-4">
         <button
           onClick={onCreateRoom}
-          className="group w-full cursor-pointer rounded-lg border-2 border-dashed border-zinc-600 p-4 text-zinc-400 transition-all duration-200 hover:border-violet-500 hover:bg-violet-500/10 hover:text-violet-400"
+          className="group w-full cursor-pointer rounded-lg border-2 border-dashed border-zinc-600 p-4 text-zinc-400 transition-all duration-200 hover:border-blue-500 hover:bg-blue-500/10 hover:text-blue-300"
         >
           <div className="flex items-center justify-center space-x-2">
             <svg

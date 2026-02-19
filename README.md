@@ -1,90 +1,65 @@
-# SyncTalk - Frontend
+# SyncTalk Frontend
 
-![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
-![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?logo=tailwindcss&logoColor=white)
+Frontend client for SyncTalk chat.
 
-This repository contains the frontend client for **SyncTalk**, a full-stack, real-time chat application. This React application provides the user interface for signing up, logging in, creating and joining chat rooms, and sending messages instantly.
+## Stack
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- React Router
+- Socket.IO client
 
----
+## Core Features
+- Registration and login flow
+- JWT-based session handling
+- Realtime room and message updates
+- Room list with unread message badges
+- Temporary room countdown display
+- Join private room by invite code
+- Creator controls for room privacy
+- Creator-only invite code visibility
+- Typing indicators and online users
+- Message edit/delete UI for message owner
+- AI room summary and smart reply suggestions
 
-## ✨ Features
+## Prerequisites
+- Node.js 18+
+- Running backend at `http://localhost:3001`
 
-- **Modern UI:** Built with React, TypeScript, and styled with Tailwind CSS for a beautiful and responsive user experience.
-- **Real-Time Messaging:** Connects to the backend via WebSockets (Socket.IO) to send and receive messages instantly without page reloads.
-- **Multi-Room Interface:** Features a dynamic sidebar to list and select chat rooms, and a main panel to display the message history and compose new messages.
-- **Secure Authentication Flow:** Handles user registration and login, securely storing JWTs in local storage to manage user sessions.
-- **Modular & Scalable:** Architected with a focus on reusable UI components, custom hooks (`useAuth`, `useRooms`, `useMessages`), and a global `AuthContext` for clean state management.
+## Environment Variables
+Create `D:\assignments\synctalk\.env`:
 
----
+```env
+VITE_BACKEND_API_URL="http://localhost:3001"
+```
 
-## 🛠️ Tech Stack
+## Local Setup
+1. Install dependencies
+```bash
+npm install
+```
 
-- **Framework:** [React](https://reactjs.org/)
-- **Language:** [TypeScript](https://www.typescriptlang.org/)
-- **Build Tool:** [Vite](https://vitejs.dev/)
-- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-- **Real-time Client:** [Socket.IO Client](https://socket.io/docs/v4/client-api/)
-- **Routing:** [React Router](https://reactrouter.com/)
-- **Notifications:** [React Hot Toast](https://react-hot-toast.com/)
+2. Start frontend
+```bash
+npm run dev
+```
 
----
+App runs on `http://localhost:5173`.
 
-## 🚀 Getting Started
+## Scripts
+- `npm run dev` start dev server
+- `npm run build` build production bundle
+- `npm run lint` run linter
+- `npm run format` format files with Prettier
+- `npm run preview` preview production build
 
-Follow these instructions to get a local copy of the frontend up and running.
+## Important Pages
+- `/` landing page
+- `/register` register user
+- `/login` login user
+- `/chat` main chat workspace
 
-### Prerequisites
-
-- [Node.js](https://nodejs.org/) (v18 or later)
-- A running instance of the [SyncTalk Backend](https://github.com/uttam-on-git/synctalk-backend)
-
-### Installation & Setup
-
-1.  **Clone the repository:**
-
-    ```bash
-    git clone https://github.com/uttam-on-git/synctalk-frontend.git
-    cd synctalk-frontend
-    ```
-
-2.  **Install dependencies:**
-
-    ```bash
-    npm install
-    ```
-
-3.  **Set up environment variables:**
-    - In the root of the project, create a new file named `.env`.
-    - Add the following variable, pointing to your local backend server:
-      ```env
-      VITE_BACKEND_API_URL="http://localhost:3001"
-      ```
-
-### Running the Application
-
-- To start the development server with hot-reloading:
-  ```bash
-  npm run dev
-  ```
-- The application will be available at `http://localhost:5173`.
-
----
-
-## 📜 Available Scripts
-
-- `npm run dev`: Runs the app in development mode.
-- `npm run build`: Builds the app for production.
-- `npm run lint`: Lints the code for errors.
-- `npm run format`: Formats all files with Prettier.
-- `npm run preview`: Serves the production build locally.
-
----
-
-## 🔑 Environment Variables
-
-| Variable               | Description                                      | Example                 |
-| :--------------------- | :----------------------------------------------- | :---------------------- |
-| `VITE_BACKEND_API_URL` | The URL of the backend API and WebSocket server. | `http://localhost:3001` |
+## Notes
+- If token is invalid/expired, app redirects to login.
+- Frontend expects backend socket and REST APIs on `VITE_BACKEND_API_URL`.

@@ -1,86 +1,12 @@
 const Logo = () => {
   return (
-    <div className="flex items-center gap-3">
-      <svg
-        width="340"
-        height="60"
-        viewBox="0 0 320 50"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <linearGradient
-            id="primaryGradient"
-            x1="0%"
-            y1="0%"
-            x2="100%"
-            y2="100%"
-          >
-            <stop offset="0%" style={{ stopColor: '#4f46e5' }} />
-            <stop offset="100%" style={{ stopColor: '#7c3aed' }} />
-          </linearGradient>
-
-          <linearGradient
-            id="accentGradient"
-            x1="0%"
-            y1="0%"
-            x2="100%"
-            y2="100%"
-          >
-            <stop offset="0%" style={{ stopColor: '#06b6d4' }} />
-            <stop offset="100%" style={{ stopColor: '#3b82f6' }} />
-          </linearGradient>
-
-          <filter id="textShadow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur in="SourceAlpha" stdDeviation="1" />
-            <feOffset dx="1" dy="1" result="offset" />
-            <feComponentTransfer>
-              <feFuncA type="linear" slope="0.15" />
-            </feComponentTransfer>
-            <feMerge>
-              <feMergeNode />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-
-        <g fontFamily="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
-          <text
-            x="20"
-            y="28"
-            fontSize="24"
-            fontWeight="700"
-            fill="#FFFFFF"
-            letterSpacing="-0.5px"
-            filter="url(#textShadow)"
-          >
-            Sync
-          </text>
-
-          <text
-            x="20"
-            y="50"
-            fontSize="24"
-            fontWeight="700"
-            fill="#2697e9"
-            letterSpacing="-0.5px"
-            filter="url(#textShadow)"
-          >
-            Talk
-          </text>
-        </g>
-
-        <text
-          x="74"
-          y="37"
-          fontFamily="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
-          fontSize="12"
-          fontWeight="500"
-          fill="#FFFFFF"
-          letterSpacing="1px"
-        >
-          SYNCHRONIZED COMMUNICATION
-        </text>
-      </svg>
+    <div className="inline-flex flex-col leading-none">
+      <span className="brand-title text-2xl font-extrabold tracking-tight text-zinc-900 sm:text-3xl">
+        Sync<span className="brand-gradient">Talk</span>
+      </span>
+      <span className="font-mono text-[9px] uppercase tracking-[0.28em] text-zinc-500 sm:text-[10px]">
+        Realtime conversation mesh
+      </span>
     </div>
   );
 };

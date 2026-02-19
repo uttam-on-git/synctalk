@@ -2,11 +2,11 @@ import type { ComponentProps } from 'react';
 
 type ButtonProps = ComponentProps<'button'>;
 
-const Button = (props: ButtonProps) => {
+const Button = ({ className = '', ...props }: ButtonProps) => {
   return (
     <button
       {...props}
-      className="w-full rounded-lg bg-cyan-500 font-semibold px-6 py-3 cursor-pointer text-white transition hover:bg-cyan-700 disbaled:cursor-not-allowed disabled:bg-neutral-600"
+      className={`accent-button w-full cursor-pointer rounded-md px-6 py-3 transition disabled:cursor-not-allowed disabled:opacity-60 ${className}`.trim()}
     />
   );
 };

@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 interface UserPayload {
   id: string;
   username: string;
+  exp?: number;
 }
 
 interface AuthContextType {
@@ -24,20 +25,45 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
+  const isTokenExpired = (exp?: number) =>
+    typeof exp === 'number' && exp * 1000 <= Date.now();
+
   useEffect(() => {
     const token = localStorage.getItem('authToken');
     if (token) {
-      const decodeUser = jwtDecode<UserPayload>(token);
-      setUser(decodeUser);
+      try {
+        const decodeUser = jwtDecode<UserPayload>(token);
+        if (isTokenExpired(decodeUser.exp)) {
+          localStorage.removeItem('authToken');
+          setUser(null);
+        } else {
+          setUser(decodeUser);
+        }
+      } catch {
+        localStorage.removeItem('authToken');
+        setUser(null);
+      }
     }
     setIsLoading(false);
   }, []);
 
   const login = (token: string) => {
-    localStorage.setItem('authToken', token);
-    const decodedUser = jwtDecode<UserPayload>(token);
-    setUser(decodedUser);
-    navigate('/chat');
+    try {
+      const decodedUser = jwtDecode<UserPayload>(token);
+      if (isTokenExpired(decodedUser.exp)) {
+        localStorage.removeItem('authToken');
+        setUser(null);
+        navigate('/login');
+        return;
+      }
+      localStorage.setItem('authToken', token);
+      setUser(decodedUser);
+      navigate('/chat');
+    } catch {
+      localStorage.removeItem('authToken');
+      setUser(null);
+      navigate('/login');
+    }
   };
 
   const logout = () => {
