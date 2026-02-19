@@ -43,6 +43,8 @@ interface SocketErrorPayload {
   message: string;
 }
 
+const AI_REQUEST_TIMEOUT_MS = 10000;
+
 const formatExpiryCountdown = (expiresAt?: string | null, nowMs = Date.now()) => {
   if (!expiresAt) return null;
   const diff = new Date(expiresAt).getTime() - nowMs;
@@ -341,17 +343,22 @@ const ChatPage = () => {
     if (!selectedRoom) return;
     const token = localStorage.getItem('authToken');
     if (!token) return;
+    if (isSummaryLoading) return;
 
     setIsSummaryLoading(true);
     try {
+      const controller = new AbortController();
+      const timeoutId = window.setTimeout(() => controller.abort(), AI_REQUEST_TIMEOUT_MS);
       const response = await fetch(
         `${import.meta.env.VITE_BACKEND_API_URL}/api/rooms/${selectedRoom.id}/summary`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
+          signal: controller.signal,
         },
       );
+      window.clearTimeout(timeoutId);
 
       if (!response.ok) {
         throw new Error('Failed to generate summary.');
@@ -360,7 +367,11 @@ const ChatPage = () => {
       const data = (await response.json()) as { summary: string };
       setAiSummary(data.summary);
     } catch (error) {
-      toast.error((error as Error).message);
+      if (error instanceof Error && error.name === 'AbortError') {
+        toast.error('Summary request timed out. Please try again.');
+      } else {
+        toast.error((error as Error).message);
+      }
     } finally {
       setIsSummaryLoading(false);
     }
@@ -370,9 +381,12 @@ const ChatPage = () => {
     if (!selectedRoom) return;
     const token = localStorage.getItem('authToken');
     if (!token) return;
+    if (areRepliesLoading) return;
 
     setAreRepliesLoading(true);
     try {
+      const controller = new AbortController();
+      const timeoutId = window.setTimeout(() => controller.abort(), AI_REQUEST_TIMEOUT_MS);
       const response = await fetch(
         `${import.meta.env.VITE_BACKEND_API_URL}/api/rooms/${selectedRoom.id}/smart-replies`,
         {
@@ -382,8 +396,10 @@ const ChatPage = () => {
             Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify({ draft }),
+          signal: controller.signal,
         },
       );
+      window.clearTimeout(timeoutId);
 
       if (!response.ok) {
         throw new Error('Failed to generate smart replies.');
@@ -391,7 +407,10 @@ const ChatPage = () => {
 
       const data = (await response.json()) as { suggestions: string[] };
       setSmartReplies(data.suggestions || []);
-    } catch {
+    } catch (error) {
+      if (error instanceof Error && error.name === 'AbortError') {
+        toast.error('Smart replies timed out. Please try again.');
+      }
       setSmartReplies([]);
     } finally {
       setAreRepliesLoading(false);
