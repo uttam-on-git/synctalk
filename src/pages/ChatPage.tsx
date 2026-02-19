@@ -910,11 +910,11 @@ const ChatPage = () => {
                     type="submit"
                     disabled={!newMessage.trim() || selectedRoomIsExpired}
                     aria-label="Send message"
-                    className="accent-button rounded-md px-4 py-3 disabled:cursor-not-allowed disabled:opacity-50 sm:px-6"
+                    className="accent-button inline-flex items-center gap-2 rounded-md px-4 py-3 disabled:cursor-not-allowed disabled:opacity-50 sm:px-6"
                   >
-                    <span className="hidden sm:inline">Send</span>
+                    <span>Send</span>
                     <svg
-                      className="h-5 w-5 sm:hidden"
+                      className="h-5 w-5"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -932,7 +932,9 @@ const ChatPage = () => {
             </>
           ) : (
             <div className="flex h-full items-center justify-center p-8">
-              <div className="max-w-xl rounded-xl border border-zinc-300 bg-zinc-50 px-8 py-10 text-center">
+              <div
+                className="welcome-card-art w-full max-w-4xl rounded-2xl border border-zinc-300 px-10 py-16 text-center sm:px-16 sm:py-20"
+              >
                 <button
                   onClick={() => setIsSidebarOpen(true)}
                   className="ghost-button mb-6 rounded-md p-2 lg:hidden"
@@ -953,28 +955,28 @@ const ChatPage = () => {
                   </svg>
                 </button>
 
-                <h2 className="brand-title text-4xl text-zinc-900">Welcome to SyncTalk</h2>
-                <p className="mt-2 text-zinc-600">
+                <h2 className="welcome-card-title brand-title text-5xl sm:text-7xl">Welcome to SyncTalk</h2>
+                <p className="welcome-card-subtitle mx-auto mt-5 max-w-3xl text-base leading-8 sm:text-xl">
                   Select an existing room or create one to begin chatting.
                 </p>
 
-                <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
+                <div className="mt-12 flex flex-col gap-3 rounded-lg p-3 sm:flex-row sm:justify-center">
                   <button
                     onClick={() => setIsSidebarOpen(true)}
-                    className="ghost-button rounded-md px-5 py-3 font-semibold lg:hidden"
+                    className="ghost-button rounded-md px-6 py-3 text-sm font-semibold lg:hidden"
                     aria-label="Open rooms panel"
                   >
                     Browse Rooms
                   </button>
                   <button
                     onClick={() => setIsModalOpen(true)}
-                    className="accent-button rounded-md px-5 py-3"
+                    className="accent-button rounded-md px-8 py-4 text-sm font-semibold"
                   >
                     Create Room
                   </button>
                   <button
                     onClick={handleJoinByCode}
-                    className="ghost-button rounded-md px-5 py-3 font-semibold"
+                    className="ghost-button rounded-md px-8 py-4 text-sm font-semibold"
                   >
                     Join By Invite Code
                   </button>
