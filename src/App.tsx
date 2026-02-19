@@ -12,6 +12,8 @@ import ChatPage from './pages/ChatPage';
 import HomePage from './pages/HomePage';
 import { useAuth } from './hooks/useAuth';
 import type { JSX } from 'react';
+import { ThemeProvider } from './context/ThemeContext';
+import ThemeToggle from './components/ui/ThemeToggle';
 
 const PrivateRoute = ({ children }: { children: JSX.Element }) => {
   const { user, isLoading } = useAuth();
@@ -31,15 +33,17 @@ const PublicRoute = ({ children }: { children: JSX.Element }) => {
 
 function App() {
   return (
-    <>
+    <ThemeProvider>
       <Router>
         <AuthProvider>
+          <ThemeToggle />
           <Toaster
             position="top-center"
             toastOptions={{
               style: {
-                background: '#333',
-                color: '#fff',
+                background: 'var(--panel-strong)',
+                color: 'var(--ink-1)',
+                border: '1px solid var(--line)',
               },
             }}
           />
@@ -73,7 +77,7 @@ function App() {
           </Routes>
         </AuthProvider>
       </Router>
-    </>
+    </ThemeProvider>
   );
 }
 
